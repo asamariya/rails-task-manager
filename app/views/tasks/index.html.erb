@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>My tasks</h1>
+  <ul class="pl-0">
+    <% @tasks.each do |task| %>
+    <li class="d-flex">
+      <% if task.completed === true %>
+        <input type="checkbox" aria-label="Checkbox for following text input" checked class="mr-2">
+        <% else %>
+        <input type="checkbox" aria-label="Checkbox for following text input" class="mr-2">
+      <% end %>
+      <p><%= task.title %></p>
+
+    </li>
+    <% end %>
+  </ul>
+
+</div>
+

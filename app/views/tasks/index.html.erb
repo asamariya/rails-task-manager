@@ -1,19 +1,22 @@
 <div class="container">
   <h1>My tasks</h1>
-  <ul class="pl-0">
+  <ul class="list-group ">
     <% @tasks.each do |task| %>
-    <li class="d-flex">
-      <%= link_to task do %>
-        <% if task.completed === true %>
-        <input type="checkbox" aria-label="Checkbox for following text input" checked class="mr-2">
-        <% else %>
-        <input type="checkbox" aria-label="Checkbox for following text input" class="mr-2">
-      <% end %>
-      <p><%= task.title %></p>
-      <% end %>
-    </li>
+      <li class="d-flex justify-content-between mb-2 list-group-item">
+        <%= link_to task do %>
+          <% if task.completed %>
+            <i class="far fa-check-square"></i>
+          <% else %>
+            <i class="far fa-square"></i>
+          <% end %>
+          <span class="ml-2 mr-2 flex-grow-1"><%= task.title %></span>
+        <% end %>
+        <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class='fas fa-trash-alt'></i>
+        <% end %>
+      </li>
     <% end %>
   </ul>
-
+  <%= link_to '+ Add a new task', tasks_new_path %>
 </div>
 
